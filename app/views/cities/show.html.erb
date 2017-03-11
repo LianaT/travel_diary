@@ -1,7 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= @city. name %></h1>
-<div><%= image_tag @city.picture.url (:medium) %></div>
+<h1 class="page-title"><%= @city. name %></h1>
+
+<div class="content-grid">
+  <% @reviews.each do |review| %>
+
+    <div class="content-block">
+      <div><%= image_tag(@city.picture_url, width: 600) if @city.picture.present? %></div>
+      <div class="content-title"><%= review.title %></div>
+    </div>
+
+
+<% end %>
+</div>
+
 
 <%= link_to 'Edit', edit_city_path(@city) %> |
 <%= link_to 'Back', cities_path %>
